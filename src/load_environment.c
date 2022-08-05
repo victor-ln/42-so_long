@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:04:16 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/12/25 23:06:04 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/05 16:22:25 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,24 @@ static int	load_sprites(t_sprites *s, void *mlx)
 {
 	int		err;
 
-	err = a_sprite(&s->grass, mlx, "/home/vlima-nu/42course/so_long/img/env/grass.xpm");
-	err += a_sprite(&s->tree, mlx, "/home/vlima-nu/42course/so_long/img/env/tree.xpm");
-	err += a_set(s->arrow, mlx, "/home/vlima-nu/42course/so_long/img/arrow/ .xpm", 4);
-	err += a_set(s->door, mlx, "/home/vlima-nu/42course/so_long/img/env/door- .xpm", 2);
-	err += a_set(s->coins, mlx, "/home/vlima-nu/42course/so_long/img/coins/coin- .xpm", 4);
-	err += a_set(s->enemy_death, mlx, "/home/vlima-nu/42course/so_long/img/enemy-death/ .xpm", 6);
-	err += a_set(s->hero[RIGHT], mlx, "/home/vlima-nu/42course/so_long/img/hero/right/ .xpm", 10);
-	err += a_set(s->hero[LEFT], mlx, "/home/vlima-nu/42course/so_long/img/hero/left/ .xpm", 10);
-	err += a_set(s->hero[DOWN], mlx, "/home/vlima-nu/42course/so_long/img/hero/down/ .xpm", 10);
-	err += a_set(s->hero[UP], mlx, "/home/vlima-nu/42course/so_long/img/hero/up/ .xpm", 10);
-	err += a_set(s->treant[RIGHT], mlx, "/home/vlima-nu/42course/so_long/img/treant/right/ .xpm", 5);
-	err += a_set(s->treant[LEFT], mlx, "/home/vlima-nu/42course/so_long/img/treant/left/ .xpm", 5);
-	err += a_set(s->treant[DOWN], mlx, "/home/vlima-nu/42course/so_long/img/treant/down/ .xpm", 5);
-	err += a_set(s->treant[UP], mlx, "/home/vlima-nu/42course/so_long/img/treant/up/ .xpm", 5);
-	err += a_set(s->mole[RIGHT], mlx, "/home/vlima-nu/42course/so_long/img/mole/right/ .xpm", 5);
-	err += a_set(s->mole[LEFT], mlx, "/home/vlima-nu/42course/so_long/img/mole/left/ .xpm", 5);
-	err += a_set(s->mole[DOWN], mlx, "/home/vlima-nu/42course/so_long/img/mole/down/ .xpm", 5);
-	err += a_set(s->mole[UP], mlx, "/home/vlima-nu/42course/so_long/img/mole/up/ .xpm", 5);
+	err = a_sprite(&s->grass, mlx, "./img/env/grass.xpm");
+	err += a_sprite(&s->tree, mlx, "./img/env/tree.xpm");
+	err += a_set(s->arrow, mlx, "./img/arrow/ .xpm", 4);
+	err += a_set(s->door, mlx, "./img/env/door- .xpm", 2);
+	err += a_set(s->coins, mlx, "./img/coins/coin- .xpm", 4);
+	err += a_set(s->enemy_death, mlx, "./img/enemy-death/ .xpm", 6);
+	err += a_set(s->hero[RIGHT], mlx, "./img/hero/right/ .xpm", 10);
+	err += a_set(s->hero[LEFT], mlx, "./img/hero/left/ .xpm", 10);
+	err += a_set(s->hero[DOWN], mlx, "./img/hero/down/ .xpm", 10);
+	err += a_set(s->hero[UP], mlx, "./img/hero/up/ .xpm", 10);
+	err += a_set(s->treant[RIGHT], mlx, "./img/treant/right/ .xpm", 5);
+	err += a_set(s->treant[LEFT], mlx, "./img/treant/left/ .xpm", 5);
+	err += a_set(s->treant[DOWN], mlx, "./img/treant/down/ .xpm", 5);
+	err += a_set(s->treant[UP], mlx, "./img/treant/up/ .xpm", 5);
+	err += a_set(s->mole[RIGHT], mlx, "./img/mole/right/ .xpm", 5);
+	err += a_set(s->mole[LEFT], mlx, "./img/mole/left/ .xpm", 5);
+	err += a_set(s->mole[DOWN], mlx, "./img/mole/down/ .xpm", 5);
+	err += a_set(s->mole[UP], mlx, "./img/mole/up/ .xpm", 5);
 	return (err);
 }
 

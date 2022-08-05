@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:57:09 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/30 04:01:19 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/05 16:22:50 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ void	draw_arrows(t_game *game)
 		move_arrows(game);
 		while (i < j)
 		{
-			if (game->arrow[i].x && game->arrow[i].y)
-				draw_sprite(game->img, game->sprites.arrow[game->arrow[i].dir], \
-					game->arrow[i].x, game->arrow[i].y);
+			draw_sprite(game->img, game->sprites.arrow[game->arrow[i].dir], \
+				game->arrow[i].x, game->arrow[i].y);
 			i++;
 		}
 	}
@@ -91,8 +90,9 @@ static void	move_arrows(t_game *g)
 		y = g->arrow[i].y / 32;
 		if ((g->map[y][x] && g->map[y][x] != ENEMY) || hit_enemies(g, i))
 		{
-			g->arrows_num--;
-			ft_bzero(g->arrow + i, sizeof(t_coord));
+			if (--g->arrows_num)
+				memmove(g->arrow + i, g->arrow + i + 1, \
+					(g->arrows_num - i) * sizeof(t_coord));
 		}
 		else
 		{
@@ -109,12 +109,13 @@ static int	hit_enemies(t_game *g, int j)
 	i = 0;
 	while (i < g->enemies_num)
 	{
-		if ((g->arrow[j].x == g->enemies[i].coord.x && \
+		if ((g->enemies[i].is_alive == 1) && \
+			((g->arrow[j].x == g->enemies[i].coord.x && \
 			g->arrow[j].y == g->enemies[i].coord.y) || \
 			(g->arrow[j].x - g->arrow[j].to_x == g->enemies[i].coord.x && \
 			g->arrow[j].y - g->arrow[j].to_y == g->enemies[i].coord.y) || \
 			((g->arrow[j].x + g->arrow[j].to_x == g->enemies[i].coord.x && \
-			g->arrow[j].y + g->arrow[j].to_y == g->enemies[i].coord.y)))
+			g->arrow[j].y + g->arrow[j].to_y == g->enemies[i].coord.y))))
 		{
 			g->enemies[i].is_alive = -1;
 			g->enemies[i].step = 0;
