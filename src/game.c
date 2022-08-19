@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:36:36 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/12/25 23:13:51 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:11:51 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,55 +27,59 @@ void	start_game(t_game *game)
 	display_game(game);
 	mlx_hook(game->screen, 17, 0L, close_window, game);
 	mlx_expose_hook(game->screen, reload_image, game);
-	mlx_key_hook(game->screen, key_press, game);
+	mlx_hook(game->screen, 2, 1, key_press, game);
+	mlx_hook(game->screen, 3, 2, key_release, game);
 	mlx_loop_hook(game->mlx, animation, game);
 	mlx_loop(game->mlx);
 }
 
-void	display_game(t_game *g)
+void	display_game(t_game *game)
 {
-	if (g->kills == g->enemies_num && !g->coins_num)
-		g->door = 1;
-	if (++g->frame == 8)
-		g->frame = 0;
-	draw_game(g);
-	mlx_do_sync(g->mlx);
-	mlx_put_image_to_window(g->mlx, g->screen, g->img, 0, 0);
-	hero_got_caught(g);
-	move_enemies(g);
-	mlx_string_put(g->mlx, g->screen, 10, 10, C_WHITE, "Moves :");
-	mlx_string_put(g->mlx, g->screen, 60, 10, C_WHITE, g->moves_str);
+	if (game->kills == game->enemies_num && !game->coins_num)
+		game->door = 1;
+	if (++game->frame == 8)
+		game->frame = 0;
+	move_player(game);
+	move_enemies(game);
+	draw_game(game);
+	mlx_do_sync(game->mlx);
+	mlx_put_image_to_window(game->mlx, game->screen, game->img, 0, 0);
+	mlx_string_put(game->mlx, game->screen, 10, 10, C_WHITE, "Moves :");
+	mlx_string_put(game->mlx, game->screen, 60, 10, C_WHITE, game->moves_str);
+	hero_got_caught(game);
 	ft_delay(45500);
 }
 
 /*
 	Checks if the hero has been caught by an enemy.
 */
-static void	hero_got_caught(t_game *g)
+static void	hero_got_caught(t_game *game)
 {
 	int		i;
 
 	i = 0;
-	while (i < g->enemies_num)
+	while (i < game->enemies_num)
 	{
-		if ((g->hero.coord.x == g->enemies[i].coord.x && \
-			g->hero.coord.y == g->enemies[i].coord.y) || \
-			(g->hero.coord.x == g->enemies[i].coord.x - \
-			g->enemies[i].coord.to_x * 4 && \
-			g->hero.coord.y == g->enemies[i].coord.y - \
-			g->enemies[i].coord.to_y * 4) || \
-			(g->hero.coord.x == g->enemies[i].coord.x + \
-			g->enemies[i].coord.to_x * 4 && \
-			g->hero.coord.y == g->enemies[i].coord.y + \
-			g->enemies[i].coord.to_y * 4))
-			exit_game(g, "You lose");
+		if ((game->enemies[i].is_alive == 1) && \
+			((game->hero.coord.x == game->enemies[i].coord.x && \
+			game->hero.coord.y == game->enemies[i].coord.y) || \
+			(game->hero.coord.x == game->enemies[i].coord.x - \
+			game->enemies[i].coord.to_x * 4 && \
+			game->hero.coord.y == game->enemies[i].coord.y - \
+			game->enemies[i].coord.to_y * 4) || \
+			(game->hero.coord.x == game->enemies[i].coord.x + \
+			game->enemies[i].coord.to_x * 4 && \
+			game->hero.coord.y == game->enemies[i].coord.y + \
+			game->enemies[i].coord.to_y * 4)))
+			exit_game(game, "You lose");
 		i++;
 	}
 }
 
 int	animation(t_game *game)
 {
-	game->hero.step = 0;
+	if (!game->hero.is_walking)
+		game->hero.step = 0;
 	display_game(game);
 	return (0);
 }

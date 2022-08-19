@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:33:25 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/30 04:03:05 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:13:03 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,18 @@ void	enemy_death(t_game *g, int i)
 		ft_bzero(g->enemies + i, sizeof(t_enemies));
 		g->kills++;
 	}
+}
+
+void	set_dir(t_coord *ptr)
+{
+	ptr->to_x = 0;
+	ptr->to_y = 0;
+	if (ptr->dir == RIGHT)
+		ptr->to_x = 1;
+	else if (ptr->dir == LEFT)
+		ptr->to_x = -1;
+	else if (ptr->dir == UP)
+		ptr->to_y = -1;
+	else
+		ptr->to_y = 1;
 }

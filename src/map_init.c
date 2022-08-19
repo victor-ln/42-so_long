@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:01:06 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/30 03:20:29 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:24:27 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ static void	hero_coords(t_game *game, int x, int y)
 {
 	game->hero.coord.x = x * 32;
 	game->hero.coord.y = y * 32;
+	game->hero.coord.to_x = 0;
+	game->hero.coord.to_y = 0;
+	game->hero.is_walking = 0;
 	game->hero.step = 0;
 	if (x < (game->width / 2))
 		game->hero.coord.dir = RIGHT;

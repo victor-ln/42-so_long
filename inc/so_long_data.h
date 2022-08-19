@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:00:10 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/30 03:24:04 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:24:07 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_hero
 {
 	t_coord		coord;
 	short		step;
+	short		is_walking;
 }	t_hero;
 
 typedef struct s_game

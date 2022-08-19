@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:00:18 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/30 03:37:48 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:11:29 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int			close_window(t_game *game);
 */
 int			key_press(int keycode, t_game *game);
 
+int			key_release(int keycode, t_game *game);
+
 /*
 	Displays the map with the player and enemies if they exist and
 	the number of movements done on the screen.
@@ -88,6 +90,8 @@ void		load_environment(t_game *game);
 	rendering coins and enemies moving.
 */
 int			animation(t_game *game);
+
+void		move_player(t_game *game);
 
 /*
 	Checks if enemies can move to a random direction. If they can it moves,
