@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:36:36 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 18:11:51 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:23:15 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,20 @@ void	display_game(t_game *game)
 static void	hero_got_caught(t_game *game)
 {
 	int		i;
+	int		x[2];
+	int		y[2];
 
-	i = 0;
-	while (i < game->enemies_num)
+	i = -1;
+	x[1] = game->hero.coord.x / 32;
+	y[1] = game->hero.coord.y / 32;
+	while (++i < game->enemies_num)
 	{
-		if ((game->enemies[i].is_alive == 1) && \
-			((game->hero.coord.x == game->enemies[i].coord.x && \
-			game->hero.coord.y == game->enemies[i].coord.y) || \
-			(game->hero.coord.x == game->enemies[i].coord.x - \
-			game->enemies[i].coord.to_x * 4 && \
-			game->hero.coord.y == game->enemies[i].coord.y - \
-			game->enemies[i].coord.to_y * 4) || \
-			(game->hero.coord.x == game->enemies[i].coord.x + \
-			game->enemies[i].coord.to_x * 4 && \
-			game->hero.coord.y == game->enemies[i].coord.y + \
-			game->enemies[i].coord.to_y * 4)))
+		if (game->enemies[i].is_alive != 1)
+			continue ;
+		x[0] = game->enemies[i].coord.x / 32;
+		y[0] = game->enemies[i].coord.y / 32;
+		if (x[0] == x[1] && y[0] == y[1])
 			exit_game(game, "You lose");
-		i++;
 	}
 }
 

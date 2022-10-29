@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:41:16 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 18:12:17 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:15:30 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ void	move_player(t_game *game)
 	if (!game->hero.is_walking)
 		return ;
 	set_dir(&game->hero.coord);
-	if (game->hero.coord.to_x && game->hero.coord.y % 32 > 28)
-		return ;
-	if (game->hero.coord.to_y && game->hero.coord.x % 32 > 28)
-		return ;
 	game->hero.coord.to_x *= 4;
 	game->hero.coord.to_y *= 4;
 	if (game->map[(game->hero.coord.y + game->hero.coord.to_y) / 32] \
