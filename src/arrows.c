@@ -6,13 +6,13 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:57:09 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 18:09:27 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:37:54 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	hit_enemies(t_game *game, int i);
+static int	hit_enemies(t_enemies *enemies, int enemies_nbr, t_coord *arw);
 static void	move_arrows(t_game *game);
 static void	realloc_arrows(t_coord **arrows, short arrows_num);
 
@@ -88,7 +88,8 @@ static void	move_arrows(t_game *g)
 			continue ;
 		x = g->arrow[i].x / 32;
 		y = g->arrow[i].y / 32;
-		if ((g->map[y][x] && g->map[y][x] != ENEMY) || hit_enemies(g, i))
+		if ((g->map[y][x] && g->map[y][x] != ENEMY) || \
+			hit_enemies(g->enemies, g->enemies_num, g->arrow + i))
 		{
 			if (--g->arrows_num)
 				memmove(g->arrow + i, g->arrow + i + 1, \
@@ -102,26 +103,25 @@ static void	move_arrows(t_game *g)
 	}
 }
 
-static int	hit_enemies(t_game *g, int j)
+static int	hit_enemies(t_enemies *enemies, int enemies_nbr, t_coord *arw)
 {
 	int		i;
 
-	i = 0;
-	while (i < g->enemies_num)
+	i = -1;
+	while (++i < enemies_nbr)
 	{
-		if ((g->enemies[i].is_alive == 1) && \
-			((g->arrow[j].x == g->enemies[i].coord.x && \
-			g->arrow[j].y == g->enemies[i].coord.y) || \
-			(g->arrow[j].x - g->arrow[j].to_x == g->enemies[i].coord.x && \
-			g->arrow[j].y - g->arrow[j].to_y == g->enemies[i].coord.y) || \
-			((g->arrow[j].x + g->arrow[j].to_x == g->enemies[i].coord.x && \
-			g->arrow[j].y + g->arrow[j].to_y == g->enemies[i].coord.y))))
+		if (enemies[i].is_alive != 1)
+			continue ;
+		if ((arw->x == enemies[i].coord.x && arw->y == enemies[i].coord.y) || \
+			(arw->x - arw->to_x == enemies[i].coord.x && \
+			arw->y - arw->to_y == enemies[i].coord.y) || \
+			((arw->x + arw->to_x == enemies[i].coord.x && \
+			arw->y + arw->to_y == enemies[i].coord.y)))
 		{
-			g->enemies[i].is_alive = -1;
-			g->enemies[i].step = 0;
+			enemies[i].is_alive = -1;
+			enemies[i].step = 0;
 			return (1);
 		}
-		i++;
 	}
 	return (0);
 }
