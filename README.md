@@ -26,7 +26,7 @@ MiniLibX requires `xorg`, `x11` and `zlib`, so you will need to install the foll
 sudo apt update && sudo apt install -y xorg libxext-dev zlib1g-dev libbsd-dev
 ````
 
-If you're on WSL, you must have installed <a src="https://sourceforge.net/projects/xming/">Xming</a>. <br>
+If you're on WSL, you must have installed <a href="https://sourceforge.net/projects/xming/">Xming</a>. <br>
 Start Xming Launch with `Multiple windows`, `Start no client` and `No Access Control` options.
 
 Finally, in your WSL execute the following command:
