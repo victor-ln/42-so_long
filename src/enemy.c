@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:33:25 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 18:13:03 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:08:08 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	enemy_death(t_game *g, int i)
 		if (g->map[y][x] == ENEMY)
 			g->map[y][x] = 0;
 		else
-			g->map[y + g->enemies[i].coord.to_y] \
-				[x + g->enemies[i].coord.to_x] = 0;
+			g->map[y + (g->enemies[i].coord.to_y / 4)] \
+				[x + (g->enemies[i].coord.to_x / 4)] = 0;
 		ft_bzero(g->enemies + i, sizeof(t_enemies));
 		g->kills++;
 	}
