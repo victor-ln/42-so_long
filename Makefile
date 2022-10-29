@@ -6,7 +6,7 @@
 #    By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 15:34:57 by vlima-nu          #+#    #+#              #
-#    Updated: 2021/10/27 15:53:31 by vlima-nu         ###   ########.fr        #
+#    Updated: 2022/10/28 22:50:43 by vlima-nu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ NAME		=	so_long
 
 CC			=	clang
 
-MLX			=	./mlx/libmlx.a
+MLX			=	./minilibx-linux/libmlx.a
 LIB			=	./libft/libft.a
 
 FLAGS		=	-Wall -Werror -Wextra -g3 -O3
 LINKS		=	-lbsd -lX11 -lXext
-INC			=	-I ./mlx -I ./inc -I ./libft
+INC			=	-I ./minilibx-linux -I ./inc -I ./libft
 
 SRC_DIR		=	./src
 OBJ_DIR		=	./obj
@@ -55,11 +55,11 @@ $(LIB):
 
 $(MLX):
 	@echo "Compiling Mlx [ .. ]"
-	@make -C ./mlx
+	@make -C ./minilibx-linux
 	@echo "Mlx is ready! [ OK ]"
 
 clean:
-	@make -C ./mlx clean
+	@make -C ./minilibx-linux clean
 	@make -C ./libft clean
 	@rm -fr obj
 	@echo "Objects files deleted."

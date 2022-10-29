@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:00:10 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 17:24:07 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:51:03 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <errno.h>
 # include <threads.h>
-# include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "libft.h"
 
 # define C_WHITE		0xFFFFFF
