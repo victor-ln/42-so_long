@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 16:35:57 by vlima-nu          #+#    #+#             */
-/*   Updated: 2021/10/25 20:17:13 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/29 14:32:38 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	check_input(int argc, char *argv)
 		perror("Error\nInvalid number of arguments");
 	else if (fd < 0)
 		perror("Error\nCould not open the file");
-	else if (ft_strcmp(".ber", argv + (ft_strlen(argv) - 4)))
+	else if (ft_strlen(argv) < 4 || \
+			ft_strcmp(".ber", argv + (ft_strlen(argv) - 4)))
 		ft_putendl_fd("Error\nInvalid file extension. It must be *.ber", 2);
 	else
 		return (fd);
