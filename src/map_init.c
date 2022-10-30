@@ -6,7 +6,7 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 04:01:06 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/08/19 17:24:27 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/30 12:06:54 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	map_matrix(t_game *game)
 		error(game, "Malloc to map matrix failed", strerror(errno));
 	while (++y < game->height)
 	{
-		game->map[y] = (char *)malloc(sizeof(char) * game->width);
+		game->map[y] = (char *)malloc((unsigned int)game->width);
 		x = -1;
 		while (++x < game->width)
 		{

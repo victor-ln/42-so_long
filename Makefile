@@ -6,13 +6,13 @@
 #    By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 15:34:57 by vlima-nu          #+#    #+#              #
-#    Updated: 2022/10/28 22:50:43 by vlima-nu         ###   ########.fr        #
+#    Updated: 2022/10/30 12:12:01 by vlima-nu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
-CC			=	clang
+CC			=	gcc
 
 MLX			=	./minilibx-linux/libmlx.a
 LIB			=	./libft/libft.a

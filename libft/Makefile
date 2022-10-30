@@ -1,6 +1,6 @@
 NAME		=	libft.a
 
-CC			=	clang
+CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -g3 -O3
 
 SRC			=	ft_bzero.c ft_calloc.c ft_putendl_fd.c \
