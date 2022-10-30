@@ -42,6 +42,8 @@ echo "export DISPLAY=localhost:0.0" >> ~/.bashrc && source ~/.bashrc
 
 ### Cloning
 
+![cloningAndCompiling](https://user-images.githubusercontent.com/81260589/198892711-cd7b2d53-aa12-4f4b-a7f7-31e7585d89ad.gif)
+
 - Clone the repository:
 ````
 git clone --recurse-submodules git@github.com:victor-ln/42-so_long.git
@@ -95,6 +97,8 @@ Map example:
 ````
 
 ## How to play?
+
+![Playing](https://user-images.githubusercontent.com/81260589/198892952-6c288146-3a77-47c4-9c2d-98459157b072.gif)
 
 The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route.
