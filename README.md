@@ -42,7 +42,7 @@ echo "export DISPLAY=localhost:0.0" >> ~/.bashrc && source ~/.bashrc
 
 ### Cloning
 
-![cloningAndCompiling](https://user-images.githubusercontent.com/81260589/198892711-cd7b2d53-aa12-4f4b-a7f7-31e7585d89ad.gif)
+![cloningAndCompiling](https://user-images.githubusercontent.com/81260589/198893232-2feac211-7da0-4094-a194-71abd85188a5.gif)
 
 - Clone the repository:
 ````
