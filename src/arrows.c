@@ -6,14 +6,14 @@
 /*   By: vlima-nu <vlima-nu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:57:09 by vlima-nu          #+#    #+#             */
-/*   Updated: 2022/10/29 17:37:54 by vlima-nu         ###   ########.fr       */
+/*   Updated: 2022/10/30 12:48:44 by vlima-nu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static int	hit_enemies(t_enemies *enemies, int enemies_nbr, t_coord *arw);
-static void	move_arrows(t_game *game);
+static void	move_arrows(t_game *game, short arrows_num);
 static void	realloc_arrows(t_coord **arrows, short arrows_num);
 
 void	draw_arrows(t_game *game)
@@ -25,7 +25,7 @@ void	draw_arrows(t_game *game)
 	j = game->arrows_num;
 	if (game->arrows_num)
 	{
-		move_arrows(game);
+		move_arrows(game, game->arrows_num);
 		while (i < j)
 		{
 			draw_sprite(game->img, game->sprites.arrow[game->arrow[i].dir], \
@@ -73,16 +73,14 @@ static void	realloc_arrows(t_coord **arrows, short arrows_num)
 	free(bkp);
 }
 
-static void	move_arrows(t_game *g)
+static void	move_arrows(t_game *g, short arrows_num)
 {
 	int		x;
 	int		y;
 	int		i;
-	int		j;
 
 	i = -1;
-	j = g->arrows_num;
-	while (++i < j)
+	while (++i < arrows_num)
 	{
 		if (!g->arrow[i].x && !g->arrow[i].y)
 			continue ;
